@@ -25,9 +25,11 @@ export class RoutesController {
     return this.routesService.findAll();
   }
 
-  @ApiBearerAuth()
-  @ApiOperation({ summary: 'Create a route' })
+  @ApiBearerAuth('jwt-auth')
+  @ApiOperation({ summary: 'Create a route (ADMIN ONLY)' })
   @ApiResponse({ status: 201, description: 'Route created' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 403, description: 'Forbidden - ADMIN role required' })
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserRole.ADMIN)
   @Post()
@@ -35,7 +37,7 @@ export class RoutesController {
     return this.routesService.create(createRouteDto);
   }
 
-  @ApiOperation({ summary: 'Create route (admin only)' })
+  @ApiOperation({ summary: 'Search route (admin only)' })
   @Post('search')
   searchRoute(@Body() dto: SearchRouteDto) {
     return this.routesService.search(dto.from, dto.to);
