@@ -15,7 +15,7 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: any) {
+  async validate(payload: { email: string; sub: string; role: string }) {
     const user = await this.usersService.findByEmail(payload.email);
     if (!user) {
       throw new UnauthorizedException();
@@ -23,6 +23,7 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
     return user;
   }
 }
+
 @Injectable()
 export class AuthService {
   constructor(

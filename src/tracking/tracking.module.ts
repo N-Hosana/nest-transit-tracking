@@ -8,8 +8,7 @@ import { Bus } from '../buses/entities/bus.entity';
 import { RouteStop } from '../routes/entities/stop.entity';
 
 @Module({
-  imports:[
-TypeOrmModule.forFeature([Bus, RouteStop])],
+  imports: [TypeOrmModule.forFeature([Bus, RouteStop])],
   controllers: [TrackingController],
   providers: [TrackingService],
   exports: [TrackingService],

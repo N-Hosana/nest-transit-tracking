@@ -17,8 +17,8 @@ export class RolesGuard implements CanActivate {
     );
 
     if (!requiredRoles) return true;
-      const request = context.switchToHttp().getRequest();
-      const user = request.user;
+    const request = context.switchToHttp().getRequest();
+    const user = request.user;
     return requiredRoles.includes(user?.role);
   }
 }
@@ -29,4 +29,3 @@ export class AdminGuard implements CanActivate {
     return req.user?.role === 'admin';
   }
 }
-

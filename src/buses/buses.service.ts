@@ -24,7 +24,9 @@ export class BusesService {
   async create(busData: Partial<Bus>, routeId?: string) {
     const bus = this.busRepository.create(busData);
     if (routeId) {
-      const route = await this.routeRepository.findOne({ where: { id: routeId } });
+      const route = await this.routeRepository.findOne({
+        where: { id: routeId },
+      });
       if (!route) {
         throw new NotFoundException(`Route with ID ${routeId} not found`);
       }

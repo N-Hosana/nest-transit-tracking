@@ -13,7 +13,7 @@ const LOCATION_COORDINATES: Record<string, Coordinates> = {
   KACYIRU: { lat: -1.9441, lng: 30.0864 },
   GISOZI: { lat: -1.9355, lng: 30.0731 },
   KICUKIRO: { lat: -1.9716, lng: 30.1044 },
-  KANOMBE: { lat: -1.9760, lng: 30.1345 },
+  KANOMBE: { lat: -1.976, lng: 30.1345 },
 
   // Southern Province
   HUYE: { lat: -2.5967, lng: 29.7394 },
@@ -30,7 +30,7 @@ const LOCATION_COORDINATES: Record<string, Coordinates> = {
   RWAMAGANA: { lat: -1.9487, lng: 30.4347 },
   KAYONZA: { lat: -1.9445, lng: 30.5079 },
   NGOMA: { lat: -2.1701, lng: 30.5316 },
-  KIREHE: { lat: -2.2606, lng: 30.7090 },
+  KIREHE: { lat: -2.2606, lng: 30.709 },
 
   // Western Province
   RUBAVU: { lat: -1.6792, lng: 29.2594 },

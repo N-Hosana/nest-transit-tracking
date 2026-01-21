@@ -8,10 +8,10 @@ import { BullModule } from '@nestjs/bullmq';
         host: 'localhost',
         port: 6379,
       },
-    }), 
- BullModule.registerQueue({
-  name: 'eta',
-}),
-],
+    }),
+    BullModule.registerQueue({
+      name: 'eta',
+    }),
+  ],
 })
 export class RedisModule {}

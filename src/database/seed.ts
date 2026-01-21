@@ -18,10 +18,30 @@ async function seed() {
       from: 'Kigali City Center',
       to: 'Nyabugogo',
       stops: [
-        { name: 'Kigali City Center', latitude: -1.9441, longitude: 30.0619, order: 1 },
-        { name: 'Kimisagara', latitude: -1.9536, longitude: 30.0588, order: 2 },
-        { name: 'Nyamirambo', latitude: -1.9667, longitude: 30.0588, order: 3 },
-        { name: 'Nyabugogo', latitude: -1.9706, longitude: 30.0444, order: 4 },
+        {
+          name: 'Kigali City Center',
+          latitude: -1.9441,
+          longitude: 30.0619,
+          order: 1,
+        },
+        {
+          name: 'Kimisagara',
+          latitude: -1.9536,
+          longitude: 30.0588,
+          order: 2,
+        },
+        {
+          name: 'Nyamirambo',
+          latitude: -1.9667,
+          longitude: 30.0588,
+          order: 3,
+        },
+        {
+          name: 'Nyabugogo',
+          latitude: -1.9706,
+          longitude: 30.0444,
+          order: 4,
+        },
       ],
     },
     {
@@ -29,10 +49,30 @@ async function seed() {
       from: 'Remera',
       to: 'Kicukiro',
       stops: [
-        { name: 'Remera', latitude: -1.9358, longitude: 30.1056, order: 1 },
-        { name: 'Kisimenti', latitude: -1.9441, longitude: 30.0944, order: 2 },
-        { name: 'Gikondo', latitude: -1.9667, longitude: 30.0833, order: 3 },
-        { name: 'Kicukiro', latitude: -1.9833, longitude: 30.0833, order: 4 },
+        {
+          name: 'Remera',
+          latitude: -1.9358,
+          longitude: 30.1056,
+          order: 1,
+        },
+        {
+          name: 'Kisimenti',
+          latitude: -1.9441,
+          longitude: 30.0944,
+          order: 2,
+        },
+        {
+          name: 'Gikondo',
+          latitude: -1.9667,
+          longitude: 30.0833,
+          order: 3,
+        },
+        {
+          name: 'Kicukiro',
+          latitude: -1.9833,
+          longitude: 30.0833,
+          order: 4,
+        },
       ],
     },
     {
@@ -40,10 +80,30 @@ async function seed() {
       from: 'Gasabo',
       to: 'Kacyiru',
       stops: [
-        { name: 'Gasabo', latitude: -1.9167, longitude: 30.0833, order: 1 },
-        { name: 'Kimihurura', latitude: -1.9278, longitude: 30.0944, order: 2 },
-        { name: 'Kibagabaga', latitude: -1.9167, longitude: 30.1056, order: 3 },
-        { name: 'Kacyiru', latitude: -1.9278, longitude: 30.1167, order: 4 },
+        {
+          name: 'Gasabo',
+          latitude: -1.9167,
+          longitude: 30.0833,
+          order: 1,
+        },
+        {
+          name: 'Kimihurura',
+          latitude: -1.9278,
+          longitude: 30.0944,
+          order: 2,
+        },
+        {
+          name: 'Kibagabaga',
+          latitude: -1.9167,
+          longitude: 30.1056,
+          order: 3,
+        },
+        {
+          name: 'Kacyiru',
+          latitude: -1.9278,
+          longitude: 30.1167,
+          order: 4,
+        },
       ],
     },
   ];
@@ -71,4 +131,4 @@ async function seed() {
   process.exit(0);
 }
 
-seed();
+void seed();

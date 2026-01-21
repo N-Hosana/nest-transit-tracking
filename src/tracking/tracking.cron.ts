@@ -5,10 +5,7 @@ import type { Queue } from 'bull';
 
 @Injectable()
 export class TrackingCron {
-  constructor(
-@InjectQueue
-    ('eta') private etaQueue: Queue,
-   ){}
+  constructor(@InjectQueue('eta') private etaQueue: Queue) {}
 
   @Cron('*/30 * * * * *')
   async refreshETAs() {
