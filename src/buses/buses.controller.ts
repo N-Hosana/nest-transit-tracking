@@ -1,24 +1,17 @@
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { BusesService } from './buses.service';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from '../auth/roles.guard';
-import { Roles } from '../auth/roles.decorator';
-import { UserRole } from '../users/entities/user.entity';
+
 import {
   ApiTags,
   ApiOperation,
   ApiResponse,
   ApiBearerAuth,
 } from '@nestjs/swagger';
+import { CreateBusDto } from './dto/create-bus.dto';
 
-class CreateDto {
-  plateNumber: string;
-  capacity?: number;
-  routeId?: string;
-}
-
-@ApiTags('buses')
-@Controller('buses')
+@ApiTags('Buses')
+@Controller('Buses')
 export class BusesController {
   constructor(private readonly busesService: BusesService) {}
 
@@ -29,15 +22,22 @@ export class BusesController {
     return this.busesService.findAll();
   }
 
-  @ApiBearerAuth()
+  @ApiBearerAuth('jwt-auth')
   @ApiOperation({ summary: 'Create a bus' })
   @ApiResponse({ status: 201, description: 'Bus created' })
-  @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Roles(UserRole.ADMIN)
+  @UseGuards(AuthGuard('jwt'))
   @Post()
-  create(@Body() createDto: CreateDto) {
-    const { routeId, ...busData } = createDto;
-    return this.busesService.create(busData, routeId);
+  create(@Body() dto: CreateBusDto) {
+    return this.busesService.create(
+      {
+        plateNumber: dto.plateNumber,
+        capacity: dto.capacity,
+        price: dto.price,
+        currentLocation: dto.currentLocation,
+        driver: dto.driver,
+      },
+      dto.routeId,
+    );
   }
 
   @ApiOperation({ summary: 'Get a bus by ID' })

@@ -122,11 +122,17 @@ async function seed() {
     }
   }
 
-  await userRepo.save({
-    email: 'admin@transit.com',
-    password: await bcrypt.hash('Admin@123', 10),
-    role: UserRole.ADMIN,
+  const existingAdmin = await userRepo.findOne({
+    where: { email: 'admin@transit.com' },
   });
+
+  if (!existingAdmin) {
+    await userRepo.save({
+      email: 'admin@transit.com',
+      password: await bcrypt.hash('Admin@123', 10),
+      role: UserRole.ADMIN,
+    });
+  }
   console.log(' Routes & Stops seeded');
   process.exit(0);
 }

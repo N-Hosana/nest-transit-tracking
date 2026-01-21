@@ -14,7 +14,6 @@ export enum BusStatus {
   ACTIVE = 'active',
   INACTIVE = 'inactive',
 }
-
 @Entity()
 export class Bus {
   @PrimaryGeneratedColumn('uuid')
@@ -23,24 +22,30 @@ export class Bus {
   @Column({ unique: true })
   plateNumber: string;
 
-  @Column({
-    type: 'enum',
-    enum: BusStatus,
-    default: BusStatus.INACTIVE,
-  })
-  status: BusStatus;
+  @Column({ type: 'int' })
+  capacity: number;
+
+  @Column({ type: 'int' })
+  price: number;
+
+  @Column({ nullable: true })
+  driver?: string;
+
   @Column()
   currentLocation: string;
 
   @ManyToOne(() => Route, (route) => route.buses, {
-    nullable: true,
+    nullable: false,
+    onDelete: 'CASCADE',
   })
   route: Route;
 
-  @ManyToOne(() => User, (user) => user.buses)
+  @ManyToOne(() => User, (user) => user.buses, {
+    nullable: true,
+  })
   createdBy: User;
 
-  @OneToMany(() => TrackingRecord, (stop) => stop.bus)
+  @OneToMany(() => TrackingRecord, (record) => record.bus)
   trackingRecords: TrackingRecord[];
 
   @CreateDateColumn()

@@ -17,13 +17,22 @@ export class BusesService {
     private readonly routeRepository: Repository<Route>,
   ) {}
 
-  findAll() {
-    return this.busRepository.find({ relations: ['route'] });
+  async findAll() {
+    return this.busRepository.find({
+      relations: {
+        route: {
+          stops: true,
+        },
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
   }
 
   async create(busData: Partial<Bus>, routeId?: string) {
     const bus = this.busRepository.create(busData);
-    if (routeId) {
+    if (routeId && routeId !== 'PUT_REAL_ROUTE_ID_HERE') {
       const route = await this.routeRepository.findOne({
         where: { id: routeId },
       });

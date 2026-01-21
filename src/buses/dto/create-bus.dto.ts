@@ -1,18 +1,31 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsOptional, IsNumber } from 'class-validator';
+import { IsInt, IsOptional, IsString, Min } from 'class-validator';
 
-export class CreateDto {
+export class CreateBusDto {
   @ApiProperty()
   @IsString()
   plateNumber: string;
 
-  @ApiProperty({ required: false, default: 40 })
-  @IsOptional()
-  @IsNumber()
-  capacity?: number;
+  @ApiProperty()
+  @IsInt()
+  @Min(1)
+  capacity: number;
+
+  @ApiProperty()
+  @IsInt()
+  @Min(0)
+  price: number;
+
+  @ApiProperty()
+  @IsString()
+  currentLocation: string;
+
+  @ApiProperty()
+  @IsString()
+  routeId: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
-  @IsNumber()
-  routeId?: number;
+  @IsString()
+  driver?: string;
 }
