@@ -15,9 +15,6 @@ export class RouteStop {
   @Column()
   name: string;
 
-  @Column()
-  location: string;
-
   @Index()
   @Column()
   order: number;

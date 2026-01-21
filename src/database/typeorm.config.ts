@@ -15,5 +15,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   password: String(process.env.DB_PASSWORD),
   database: String(process.env.DB_NAME),
   entities: [User, Route, RouteStop, Bus, TrackingRecord],
-  synchronize: false,
+  synchronize: true,
+  dropSchema: true,
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
 };

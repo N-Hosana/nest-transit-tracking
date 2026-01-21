@@ -10,7 +10,7 @@ import { Bus } from '../../buses/entities/bus.entity';
 
 @Entity()
 export class Route {
-@PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -22,9 +22,9 @@ export class Route {
   @Column()
   to: string;
 
-  @Column('simple-json', { nullable: true })
   @OneToMany(() => Bus, (bus) => bus.route)
   buses: Bus[];
+
   @OneToMany(() => RouteStop, (stop) => stop.route)
   stops?: RouteStop[];
 
